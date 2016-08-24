@@ -116,6 +116,7 @@
 				},false);
 
 				container.addEventListener("touchmove",function(e){
+					e.preventDefault();
 					var touch = e.targetTouches[0];
 					var x = Number(touch.clientX);
 					var y = Number(touch.clientY);
