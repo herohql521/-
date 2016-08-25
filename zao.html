@@ -117,6 +117,19 @@
 					 Gy = Math.round(obj.lat - sLat)*0.2<2?0:Math.round(obj.lat - sLat)*0.2;
 
 					changetyle();
+
+					$( '#stage' ).tween({
+  											transform:{
+      										start: 'translateZ(-180px)',
+      										stop: 'translateZ(-150px)',
+      										time: 0,
+      										duration: 2,
+      										effect:'easeOut'
+   										}
+						});
+ 
+					$.play();
+
 				}
 
 				s.init();
