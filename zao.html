@@ -105,7 +105,7 @@
 				var s = new Orienter();
 
 				//初始化sLon和sLat的静态值
-				var sLon , sLat, Gx=0, Gy=0;
+				var sLon , sLat, Gx = 0, Gy = 0;
 				s.handler = function(obj){
 					sLon = obj.lon;
 					sLat = obj.lat;
@@ -119,8 +119,8 @@
 					changetyle();
 				}
 
-				o.init();
 				s.init();
+				o.init();
 
 
 
@@ -131,7 +131,7 @@
 			
 
 				var startX, startY;
-				var degY = Gx  =0 , degX = Gy = 0 ;
+				var degY =0 , degX = 0 ;
 
 				
 
@@ -192,6 +192,7 @@
 				function changetyle(){
 					var sx = degX+Gy;
 					var zy = degY-Gx;
+				
 					zhuan.style.webkitTransform = "translate3D(0px,0px,0px) rotateX("+sx+"deg) rotateY("+zy+"deg) rotateZ(0deg)";
 
 				}
