@@ -109,7 +109,7 @@
 				s.handler = function(obj){
 					sLon = obj.lon;
 					sLat = obj.lat;
-					s.destory();
+					s.destroy();
 				}
 				//监听感应值
 				o.handler = function(obj){
@@ -118,6 +118,9 @@
 
 					changetyle();
 				}
+
+				o.init();
+				s.init();
 
 
 
