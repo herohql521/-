@@ -10,6 +10,7 @@
 	<title>zao</title>
 	<script src="./js/jquery-1.11.3.min.js"></script>
 	<script src="./js/jstween-1.2.min.js"></script>
+	<script src="./js/orienter.js"></script>
 
 	<style>
 		*{margin:0; padding:0;}
@@ -98,6 +99,28 @@
 				zhuan.style.height = Height;
 			var stage = document.getElementById("stage");
 
+				//重力感应
+
+				var o = new Orienter();
+				var s = new Orienter();
+
+				//初始化sLon和sLat的静态值
+				var sLon , sLat, Gx=0, Gy=0;
+				s.handler = function(obj){
+					sLon = obj.lon;
+					sLat = obj.lat;
+					s.destory();
+				}
+				//监听感应值
+				o.handler = function(obj){
+					var Gx = obj.lon - sLon;
+					var Gy = obj.lat - sLat;
+
+					changetyle();
+				}
+
+
+
 
 
 				//Touch
@@ -105,7 +128,8 @@
 			
 
 				var startX, startY;
-				var degY = 0, degX = 0;
+				var degY = Gx  =0 , degX = Gy = 0 ;
+
 				
 
 
@@ -143,7 +167,7 @@
 					};
 					
 				
- 					zhuan.style.webkitTransform = "translate3D(0px,0px,0px) rotateX("+degX+"deg) rotateY("+degY+"deg) rotateZ(0deg)";
+ 				
 
  					$( '#stage' ).tween({
   											transform:{
@@ -156,9 +180,19 @@
 						});
  
 					$.play();
+					changetyle();
+					
 					
 
 				},false)
+
+				function changetyle(){
+					var sx = degX+Gy;
+					var zy = degY-Gx;
+					zhuan.style.webkitTransform = "translate3D(0px,0px,0px) rotateX("+sx+"deg) rotateY("+zy+"deg) rotateZ(0deg)";
+
+				}
+				
 
 				
 			
