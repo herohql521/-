@@ -113,8 +113,8 @@
 				}
 				//监听感应值
 				o.handler = function(obj){
-					 Gx = Math.round(obj.lon - sLon);
-					 Gy = Math.round(obj.lat - sLat);
+					 Gx = obj.lon - sLon;
+					 Gy = obj.lat - sLat;
 
 					changetyle();
 
