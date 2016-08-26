@@ -118,18 +118,7 @@
 
 					changetyle();
 
-					$( '#stage' ).tween({
-  											transform:{
-      										start: 'translateZ(-180px)',
-      										stop: 'translateZ(-150px)',
-      										time: 0,
-      										duration: 2,
-      										effect:'easeOut'
-   										}
-						});
- 
-					$.play();
-
+					
 				}
 
 				s.init();
@@ -167,8 +156,8 @@
 					
 					//定于1px = 0.015deg
 					
-					 degY = degY - 0.015* moveX;
-					 degX = degX + 0.015* moveY;
+					 degY = degY - 0.008* moveX;
+					 degX = degX + 0.003* moveY;
 					//规定rotateX最大30deg
 					if(degX>30){
 						degX = 30; 
