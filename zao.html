@@ -14,15 +14,17 @@
 
 	<style>
 		*{margin:0; padding:0;}
-		html,body{width:640px; height:100%; overflow:hidden;}
+		html,body{width:640px; height:100%; overflow:hidden; background:#000;}
 	
-		.bg{background:url(img/front.jpg) no-repeat top center; position:absolute;top:0; bottom:0; left:0; right:0; margin:auto; width:100%; height:100%;overflow:hidden;}
-		.container{position:absolute;width:640px; height:960px; perspective:800px; perspective-origin:50% 50%; transform-style:flat;transform-origin:50% 50% 0px; overflow:hidden;}
-		.main{position:absolute;transform:translate3D(-50%,-50%,0) translateX(320px) translateY(0px) translateZ(800px) ;transform-style:preserve-3d;transform-origin:50% 50% 0px;}
-		.stage{position:absolute;transform:translate3D(-50%,-50%,0) translate3D(0px,0px,-150px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);transform-style:preserve-3d;transform-origin:50% 50% 0px; }
-		.zhuan{position:absolute;transform:translate3D(0px,0px,0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);transform-style:preserve-3d; transform-origin:left 50% 0px; width:640px;height:960px;}
+		.bg{background:url(img/bg.jpg) no-repeat center center; position:absolute;top:0; bottom:0; left:0; right:0; margin:auto; width:100%; height:100%;overflow:hidden;background-size:200%;z-index:998;display:none;}
+		.container{position:absolute;width:640px; height:960px; perspective:800px; perspective-origin:50% 50%; transform-style:flat;transform-origin:50% 50% 0px; overflow:hidden;z-index:100;}
+		.bd_3D{position:absolute;transform:translate3D(0,0,0) translateX(0px) translateY(0px) translateZ(0px) ;transform-style:preserve-3d;perspective:800px; perspective-origin:50% 50%;transform-origin:50% 50% 0px;width:640px; height:100%; overflow:hidden;}
+		.main{position:absolute;transform:translate3D(-50%,-50%,0) translateX(-320px) translateY(0px) translateZ(-150px) ;transform-style:preserve-3d;transform-origin:50% 50% 0px;}
+		.stage{position:absolute;transform:translate3D(-50%,-50%,0) translate3D(0px,0px,-150px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);transform-style:preserve-3d;transform-origin:50% 50% 0px; display:none;}
+		.zhuan{position:absolute;transform:translate3D(0px,0px,0px) translateZ(-800px) rotateX(0deg) rotateY(-540deg) rotateZ(0deg);transform-style:preserve-3d; transform-origin:left 50% 0px; width:640px;height:960px;}
 
 		.pic{width:129px;height:1170px;transform-origin:50% 50% 0px; backface-visibility:hidden; position:absolute;}
+		.n{width:129px;height:410px;transform-origin:50% 50% 0px; backface-visibility:hidden; position:absolute;}
 		.pic1{background:url(img/0.png); background-repeat:no-repeat; transform: rotateY(180deg) translate3D(0px,0px,-406px);}
 		.pic2{background:url(img/1.png); background-repeat:no-repeat; transform: rotateY(162deg) translate3D(0px,0px,-406px);}
 		.pic3{background:url(img/2.png); background-repeat:no-repeat; transform: rotateY(144deg) translate3D(0px,0px,-406px);}
@@ -43,8 +45,77 @@
 		.pic18{background:url(img/17.png); background-repeat:no-repeat; transform: rotateY(-126deg) translate3D(0px,0px,-406px);}
 		.pic19{background:url(img/18.png); background-repeat:no-repeat; transform: rotateY(-144deg) translate3D(0px,0px,-406px);}
 		.pic20{background:url(img/19.png); background-repeat:no-repeat; transform: rotateY(-162deg) translate3D(0px,0px,-406px);}
+		.nei{position: absolute; transform: translate3d(-50%, -50%, 0px) translate3d(-7px, 625px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);
+    transform-style: preserve-3d}
+		.n1{background:url(img/n1.png); background-repeat:no-repeat; transform: rotateY(-54deg) translate3D(0px,0px,-406px);}
+		.n2{background:url(img/n2.png); background-repeat:no-repeat; transform: rotateY(-72deg) translate3D(0px,0px,-406px);}
+		.n3{background:url(img/n3.png); background-repeat:no-repeat; transform: rotateY(-90deg) translate3D(0px,0px,-406px);}
+		.text{width:487px; height:79px; background:url(img/w1.png); position:absolute; top:0; left:0; right:0; bottom:0; margin:auto; z-index:999; opacity:1;transform-style:preserve-3d; transform-origin:50% 50% 0px; transform:rotateY(-90deg);}
 		
-		
+		.tao{width:500px; height:600px; background:url(img/tao.png); position:absolute; top:0; left:0; right:0; bottom:0; margin:auto; z-index:999;opacity:1;transform-style:preserve-3d;transform-origin:50% 50% 0px; -webkit-animation: tao 2s 1s both ease-out;transform:rotateY(-90deg);}
+		.obj_3d{position:absolute;transform:translate3D(0,0,0) translateX(0px) translateY(0px) translateZ(0px) ;transform-style:preserve-3d;perspective:800px; perspective-origin:50% 50%; transform-origin:50% 50% 0px; width:640px; height:100%;z-index:999; overflow:hidden;}
+		.t1{background:url(img/t1.png); width:100px; height:100px;position:absolute;left:0;right:0; margin:auto; transform:rotateY(0deg) translateZ(0px); }
+		.t1_a{-webkit-animation: t1 2s 1s  forwards ease-out;}
+		.t2{background:url(img/t2.png); width:100px; height:100px; position:absolute;left:0;right:0; margin:auto;transform:rotateY(45deg) translateZ(0px); }
+		.t2_a{-webkit-animation: t2 2s 1s  forwards ease-out;}
+		.t3{background:url(img/t3.png); width:100px; height:100px; position:absolute;left:0;right:0; margin:auto;transform:rotateY(90deg) translateZ(0px); }
+		.t3_a{-webkit-animation: t3 2s 1s  forwards ease-out;}
+		.t4{background:url(img/t4.png); width:100px; height:100px; position:absolute;left:0;right:0; margin:auto;transform:rotateY(135deg) translateZ(0px); }
+		.t4_a{-webkit-animation: t4 2s 1s  forwards ease-out;}
+		.t5{background:url(img/t1.png); width:100px; height:100px; position:absolute;left:0;right:0; margin:auto;transform:rotateY(180deg) translateZ(0px); }
+		.t5_a{-webkit-animation: t5 2s 1s  forwards ease-out;}
+		.y1{background:url(img/y1.png); width:200px; height:100px; position:absolute;transform:rotateY(225deg) translateZ(0px); }
+		.y1_a{-webkit-animation: y1 2s 1s  forwards ease-out;}
+		.y2{background:url(img/y2.png); width:200px; height:100px; position:absolute; transform:rotateY(270deg) translateZ(0px); }
+		.y2_a{-webkit-animation: y2 2s 1s  forwards ease-out;}
+		.y3{background:url(img/y3.png); width:200px; height:100px; position:absolute; transform:rotateY(315deg) translateZ(0px); }
+		.y3_a{-webkit-animation: y3 2s 1s  forwards ease-out;}
+		.zq{transform-style:preserve-3d; transform-origin:50% 50% 0; }
+		.obj_box{position:absolute;transform:translateX(220px) translateY(40%) translateZ(0px); width:640px; height:100%;}
+		.center_box{width:200px;height:100px;position:absolute;transform-style:preserve-3d; transform-origin:50% 50% 0;}
+
+		@-webkit-keyframes y1{
+			0%{transform:rotateY(225deg) translateZ(0px) translateY(0px); opacity:0;}
+			50%{transform:rotateY(225deg) translateZ(350px) translateY(-270px);opacity:1;}
+			100%{transform:rotateY(225deg) translateZ(0px) translateY(0px); opacity:1;}
+
+		}
+		@-webkit-keyframes y2{
+			0%{transform:rotateY(270deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(270deg) translateZ(550px) translateY(-370px);opacity:1;}
+			100%{transform:rotateY(270deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes y3{
+			0%{transform:rotateY(315deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(315deg) translateZ(250px) translateY(-390px);opacity:1;}
+			100%{transform:rotateY(315deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes t1{
+			0%{transform:rotateY(0deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(0deg) translateZ(1250px) translateY(-100px);opacity:1;}
+			100%{transform:rotateY(0deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes t2{
+			0%{transform:rotateY(45deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(45deg) translateZ(250px) translateY(-50px);opacity:1;}
+			100%{transform:rotateY(45deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes t3{
+			0%{transform:rotateY(90deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(90deg) translateZ(350px) translateY(-200px);opacity:1;}
+			0%{transform:rotateY(90deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes t4{
+			0%{transform:rotateY(135deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(135deg) translateZ(950px) translateY(360px);opacity:1;}
+			100%{transform:rotateY(135deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+		@-webkit-keyframes t5{
+			0%{transform:rotateY(180deg) translateZ(0px) translateY(0px);opacity:0;}
+			50%{transform:rotateY(180deg) translateZ(150px) translateY(550px);opacity:1;}
+			100%{transform:rotateY(180deg) translateZ(0px) translateY(0px);opacity:1;}
+		}
+	
 	</style>
 
 </head>
@@ -77,13 +148,41 @@
 						<div class="pic pic20"></div>
 					</div>
 
+					<div class="nei">
+						<div class="n n1"></div>
+						<div class="n n2"></div>
+						<div class="n n3"></div>
+					</div>
+
 					
 
 				</div>
 				
 			</div>
+			
 		</div>
+		
 	</div>
+	<div class="bd_3D">
+		<div class="text"></div>
+		<div class="tao"></div>
+	</div>
+	<div class="obj_3d">
+		<div class="obj_box">
+			<div class="center_box">
+				<div class="y1 zq"></div>
+				<div class="y2 zq"></div>
+				<div class="y3 zq"></div>
+				<div class="t1 zq"></div>
+				<div class="t2 zq"></div>
+				<div class="t3 zq"></div>
+				<div class="t4 zq"></div>
+				<div class="t5 zq"></div>
+			</div>
+			
+		</div>		
+	</div>
+	
 
 	<script>
 		function init(){
@@ -94,27 +193,217 @@
 				container.style.height = Height;
 				container.style.perspective = perspective; 
 			var main = document.getElementById("main");
-				main.style.webkitTransform = "translate3D(-50%,-50%,0) translateX(320px) translateY(0px) translateZ("+perspective+")";
+				main.style.webkitTransform = "translate3D(-50%,-50%,0) translateX(-320px) translateY(0px) translateZ(-150px)";
 			var zhuan = document.getElementById("zhuan");
 				zhuan.style.height = Height;
+				zhuan.style.webkitTransform = "translateZ("+-parseInt(perspective)+"px) rotateY(-540deg)";
 			var stage = document.getElementById("stage");
+			
+			function bg(){
+				function addClass(){
+					$('.y1').addClass('y1_a');
+					$('.y2').addClass('y2_a');
+					$('.y3').addClass('y3_a');
+					$('.t1').addClass('t1_a');
+					$('.t2').addClass('t2_a');
+					$('.t3').addClass('t3_a');
+					$('.t4').addClass('t4_a');
+					$('.t5').addClass('t5_a');
+				};
+				addClass();
 
+				function removeClass(){
+					$('.y1').removeClass('y1_a');
+					$('.y2').removeClass('y2_a');
+					$('.y3').removeClass('y3_a');
+					$('.t1').removeClass('t1_a');
+					$('.t2').removeClass('t2_a');
+					$('.t3').removeClass('t3_a');
+					$('.t4').removeClass('t4_a');
+					$('.t5').removeClass('t5_a');
+				};
+
+				function box_zq(){
+				$('.center_box').tween({
+							transform:{
+								start:'rotateY(0deg) scale3d(0.1,0.1,1)',
+								stop:'rotateY(360deg) scale3d(1,1,1)',
+								time: 0,
+								duration: 3,
+								effect:'easeInOut',
+								onStop: function(){
+									$('.center_box').tween({
+										transform:{
+											start:'rotateY(0deg) scale3d(1,1,1)',
+											stop:'rotateY(180deg) scale3d(0.1,0.1,1)',
+											time: 0,
+											duration: 1,
+											effect:'easeOut',
+											onStop:function(){
+												box_zq();
+												removeClass();
+
+												
+											}
+										}
+									})
+								}
+
+							}
+						
+
+				});
+				$.play();
+			}
+			box_zq();
+				
+			setTimeout(function(){
+				$('.bg').fadeIn(1000).fadeOut(2000);
+				$('.tao').tween({
+								transform:{
+								start: 'rotateY(-90deg) scale3d(1,1,1)',
+								stop: 'rotateY(90deg) scale3d(0.5,0.5,1)',
+								time: 0,
+								duration: 2,
+								effect:'easeInOut'
+								}
+							
+				});
+				$.play();
+
+
+				
+		
+				
+			},1000)
+
+			function kc(){
+
+				
+				$("#zhuan").tween({
+
+									transform:{
+												start: 'translateZ('+-parseInt(perspective)+'px) rotateY(-540deg)',
+												stop: 'translateZ(0px) rotateY(0deg)',
+												time: 0,
+												duration: 6,
+												effect:'easeInOut'
+												}
+									
+								});
+				$("#main").tween({
+									transform:{
+												start:"translate3D(-50%,-50%,0) translateX(-320px) translateY(0px) translateZ(-150px)",
+												stop: "translate3D(-50%,-50%,0) translateX(320px) translateY(0px) translateZ("+perspective+")",
+												time: 0,
+												duration: 3,
+												effect:'easeInOut'
+												}
+									
+								});
+									
+								$.play();
+								
+								setTimeout(function(){
+											core();
+											},6000)
+								
+			}
+
+			setTimeout(function(){
+				addClass();
+				$('.bg').fadeIn(2000).fadeOut(1000);
+				$('.text').tween({
+								transform:{
+								start: 'rotateY(-90deg) scale3d(1,1,1)',
+								stop: 'rotateY(90deg) scale3d(0.5,0.5,1)',
+								time: 0,
+								duration: 3,
+								effect:'easeInOut',
+								onStop:function(){
+									$.clear();
+									
+									$('.bd_3D').fadeOut();
+									$('.obj_3d').fadeOut();
+									$('.stage').fadeIn();
+									setTimeout(function(){
+										$('.bg').fadeIn().css({'background':'url(img/front.jpg)','z-index':'99'});
+										kc();
+									},1500)
+								}
+								}
+								
+							
+				});
+				$.play();
+
+			},4000)
+			
+				
+			}
+			bg();
+
+
+
+			
+			
+			
+			
+			
+			
+			function core(){
+				
 				//重力感应
 
 				var o = new Orienter();
 				var s = new Orienter();
+				var b = new Orienter();
 
 				//初始化sLon和sLat的静态值
-				var sLon , sLat, Gx = 0, Gy = 0;
+				var sLon , sLat, Gx = 0, Gy = 0, bLon, bLat;
 				s.handler = function(obj){
 					sLon = obj.lon;
 					sLat = obj.lat;
 					s.destroy();
 				}
+				//监听感应变化
+				b.handler = function(obj){
+					bLon = obj.lon;
+					bLat = obj.lat;
+					b.destroy();
+				}
 				//监听感应值
 				o.handler = function(obj){
-					 Gx = obj.lon - sLon;
-					 Gy = obj.lat - sLat;
+					
+					 
+					 b.init();
+					 var bh_x = Math.abs(obj.lon - bLon);
+					 var bh_y = Math.abs(obj.lat - bLat);
+					 if(bh_x >3 || bh_y>3){
+						$.clear();
+						$( '#stage' ).tween({
+  											transform:{
+      										start: 'translateZ(-200px)',
+      										stop: 'translateZ(-150px)',
+      										time: 0,
+      										duration: 2,
+      										effect:'easeOut'
+   										}
+						});
+ 
+						$.play();
+						
+					 }
+					 
+					 if(bh_x >1){
+						 Gx = obj.lon - sLon -1;
+						
+					 
+					 }
+					 if(bh_y>1){
+						Gy = obj.lat - sLat -1;
+					 }
+					 
 
 					changetyle();
 
@@ -154,16 +443,17 @@
 					var moveX = x - startX;
 					var moveY = y - startY;
 					
-					//定于1px = 0.015deg
+					//定于1px = 0.015deg 
 					
-					 degY = degY - 0.008* moveX;
-					 degX = degX + 0.003* moveY;
+					 degY = degY - 0.009* moveX;
+					 degX = degX + 0.004* moveY;
 					//规定rotateX最大30deg
-					if(degX>30){
+					/*if(degX>30){
 						degX = 30; 
 					}else if(degX <-30){
 						degX =-30;
-					};
+					};*/
+					//后来发现，上滑最大值30，若重力值Gy=-20，那么无论怎么滑始sx终停在=10，无法达到30，导致上滑失效的现象.
 
 					if(degY>359){
 						degY = 0;
@@ -173,13 +463,13 @@
 					
 				
  				
-
+					$.clear();
  					$( '#stage' ).tween({
   											transform:{
       										start: 'translateZ(-200px)',
       										stop: 'translateZ(-150px)',
       										time: 0,
-      										duration: 2.5,
+      										duration: 2,
       										effect:'easeOut'
    										}
 						});
@@ -192,12 +482,21 @@
 				},false)
 
 				function changetyle(){
-					var sx = degX+Gy;
-					var zy = degY-Gx;
+					var sx = degX+Gy;//上下
+					var zy = degY-Gx;//左右
+					if(sx>=0){
+						sx = Math.min(30,sx);
+					}else{
+						sx = Math.max(-30,sx)
+					}
 				
 					zhuan.style.webkitTransform = "translate3D(0px,0px,0px) rotateX("+sx+"deg) rotateY("+zy+"deg) rotateZ(0deg)";
 
 				}
+				
+			}
+
+				
 				
 
 				
